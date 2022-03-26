@@ -1,0 +1,22 @@
+[user]
+  name = Joel Klint
+  email = joel.klint@gmail.com
+[core]
+  autocrlf = input
+  safecrlf = true
+  editor = vim
+[alias]
+  co = checkout
+  com = commit -v
+  st = status
+  br = branch -vv
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+        lb = !git branch --sort='-committerdate' --format='%(color:green)%(committerdate:relative)%(color:reset) %(refname:short)' | fzf --ansi --layout=reverse --info=hidden --height=10 | sed 's/.*ago[ ]*//g' | xargs git checkout
+        lb-remote = !git fetch --all --prune && git branch -a --sort='-committerdate' --format='%(color:green)%(committerdate:relative)%(color:reset) %(refname:short)' | fzf --ansi --layout=reverse --info=hidden --height=10 | sed 's/.*ago[ ]*//g' | xargs git checkout
+  clean-slate = clean -fdx
+[push]
+  default = simple
+[init]
+  defaultBranch = main
+[include]
+  path = ~/.gitconfig_local
